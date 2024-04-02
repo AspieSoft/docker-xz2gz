@@ -24,11 +24,11 @@ docker run -v ./dir:/input -e XZMODE="remove" aspiesoft/xz2gz:latest
 
 ### XZMODE Methods
 
-- **remove**: (default) removes <file>.tar.xz after successfully creating <file>.tar.gz
-- **keep**: keeps <file>.tar.xz without touching it
-- **rename**: removes <file>.tar.xz, then renames <file>.tar.gz to <file>.tar.xz
-- **link**: removes <file>.tar.xz, then creates a symlink to <file>.tar.gz named <file>.tar.xz
-- **rename-link**: removes <file>.tar.xz, then renames <file>.tar.gz to <file>.tar.xz, then creates a symlink to <file>.tar.xz named <file>.tar.gz
+- **remove**: (default) removes \<file\>.tar.xz after successfully creating \<file\>.tar.gz
+- **keep**: keeps \<file\>.tar.xz without touching it
+- **rename**: removes \<file\>.tar.xz, then renames \<file\>.tar.gz to \<file\>.tar.xz
+- **link**: removes \<file\>.tar.xz, then creates a symlink to \<file\>.tar.gz named \<file\>.tar.xz
+- **rename-link**: removes \<file\>.tar.xz, then renames \<file\>.tar.gz to \<file\>.tar.xz, then creates a symlink to \<file\>.tar.xz named \<file\>.tar.gz
 
 #### Why rename a .tar.gz file to .tar.xz?
 
