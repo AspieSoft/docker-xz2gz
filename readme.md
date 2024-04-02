@@ -7,3 +7,5 @@ Convert all `tar.xz` files in a specified directory to `tar.gz` through a docker
 ```shell
 docker run -v <My Input Directory>:/input aspiesoft/xz2gz:latest
 ```
+
+[Docker](https://hub.docker.com/repository/docker/aspiesoft/xz2gz/general)
