@@ -1,9 +1,8 @@
-FROM debian:10
+FROM fedora:38
 
 WORKDIR /app
 
-RUN apt -y update
-RUN apt -y install xz-utils
+RUN dnf -y downgrade xz xz-*
 
 COPY src/* ./
 

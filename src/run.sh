@@ -1,10 +1,13 @@
 #!/bin/bash
 
+# disable ssh
 systemctl stop ssh &>/dev/null
+systemctl stop sshd &>/dev/null
 update-rc.d ssh remove &>/dev/null
+update-rc.d sshd remove &>/dev/null
 
-# apt -y update
-# apt -y install xz-utils
+# search dirs and subdires for .tar.xz, and decompress
+# then recompress to .tar.gz
 
 if [ "$1" == "" ]; then
   cd /input
