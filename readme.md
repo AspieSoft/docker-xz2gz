@@ -30,14 +30,14 @@ docker run -v ./dir:/input -e XZMODE="remove" aspiesoft/xz2gz:latest
 - **link**: removes \<file\>.tar.xz, then creates a symlink to \<file\>.tar.gz named \<file\>.tar.xz
 - **rename-link**: removes \<file\>.tar.xz, then renames \<file\>.tar.gz to \<file\>.tar.xz, then creates a symlink to \<file\>.tar.xz named \<file\>.tar.gz
 
-#### Why rename a .tar.gz file to .tar.xz?
+#### Why rename a `.tar.gz` file to `.tar.xz`?
 
 For the `tar` command in linux, it is considered a best practice to use `tar -xf` and not `tar -xJf` or `tar -xzf`.
 This means it is more common not to specify a compression algorithm when decompressing archives, and to instead
 let the `tar` command handle it. The `tar` command in linux does not care what the file extension is, and actually
 reads the headers of the file to determine whether it is `.xz` or `.gz` that should be used for decompression.
 
-If you need to convert a `.tar.xz` file to `.tar.gz`, and cannot change a program to look for .gz instead of .xz,
+If you need to convert a `.tar.xz` file to `.tar.gz`, and cannot change a program to look for `.gz` instead of `.xz`,
 if that program happens to follow the linux best practice, then we can force the `.tar.gz` file to be compatible,
 by renaming it to `.tar.xz`. It will still use the `.gz` algorithm, but the program will still find its expected
 `.xz` file.
