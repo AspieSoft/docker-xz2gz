@@ -2,6 +2,7 @@ FROM fedora:38
 
 WORKDIR /app
 
+RUN dnf -y install xz xz-*
 RUN dnf -y downgrade xz xz-*
 
 COPY src/* ./

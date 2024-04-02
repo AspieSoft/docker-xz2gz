@@ -10,21 +10,34 @@ r2="$((r+1))"
 
 for i in *.tar.xz; do
   if test -f "$i"; then
-    d="${i%\.tar\.xz}.ext.$RANDOM.tmp"
-
+    d="${i%\.tar\.xz}.xz2gz.ext.$RANDOM.tmp"
     mkdir "$d"
-    tar -xf "$i" -C "$d" --same-owner
+
+    tar -xJf "$i" -C "$d" --same-owner
+    if [ "$?" != "0" ]; then
+      rm -rf "$d"
+      continue
+    fi
 
     if [ "$r" -lt "20" ]; then
       bash /app/recomp.sh "$d" "$r2"
     fi
 
-    tar -czf "${i%\.xz}.gz" "$d"
+    dir="$PWD"
+    cd "$d"
+    tar -czf "$dir/${i%\.xz}.gz" .
+    if [ "$?" != "0" ]; then
+      cd "$dir"
+      rm -rf "$d"
+      continue
+    fi
+
+    cd "$dir"
     rm -rf "$d"
 
     if test -f "${i%\.xz}.gz"; then
       chown --reference="$i" "${i%\.xz}.gz"
-      rm -f "$i"
+      bash /app/handle-xz.sh "$i"
     fi
   fi
 done
